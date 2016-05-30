@@ -3,21 +3,21 @@ package com.dogoodapps.enlist.ui.presenters;
 import android.util.Log;
 
 import com.dogoodapps.enlist.api.interactors.TheMovieDbInteractor;
-import com.dogoodapps.enlist.api.response.TvResponse;
-import com.dogoodapps.enlist.ui.mvp.TvShowMVP;
+import com.dogoodapps.enlist.api.response.PeopleResponse;
+import com.dogoodapps.enlist.ui.mvp.PeopleMVP;
 
 import rx.Subscriber;
 
-public class TvShowPresenter extends BasePresenter<TvShowMVP.View> implements TvShowMVP.Presenter {
+public class PeoplePresenter extends BasePresenter<PeopleMVP.View> implements PeopleMVP.Presenter {
 
-	public TvShowPresenter(TvShowMVP.View view) {
+	public PeoplePresenter(PeopleMVP.View view) {
 		super(view);
 	}
 
 	@Override
 	public void loadResults() {
 		// TODO: Show loading?
-		TheMovieDbInteractor.getTvShows(new Subscriber<TvResponse>() {
+		TheMovieDbInteractor.getPeople(new Subscriber<PeopleResponse>() {
 			@Override
 			public void onCompleted() {
 				Log.d("enList", "Completed");
@@ -31,8 +31,8 @@ public class TvShowPresenter extends BasePresenter<TvShowMVP.View> implements Tv
 			}
 
 			@Override
-			public void onNext(TvResponse tvResponse) {
-				getView().displayResults(tvResponse.getResults());
+			public void onNext(PeopleResponse peopleResponse) {
+				getView().displayResults(peopleResponse.getResults());
 			}
 		});
 	}

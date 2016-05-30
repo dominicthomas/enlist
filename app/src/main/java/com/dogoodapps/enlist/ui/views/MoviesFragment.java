@@ -38,6 +38,10 @@ public class MoviesFragment extends BaseMVPFragment<MoviesPresenter> implements 
 
 	@Override
 	public void displayResults(List<Movie> movies) {
-		resultsTextView.setText("Movies:" + movies.size());
+		StringBuilder stringBuilder = new StringBuilder();
+		for(Movie movie : movies){
+			stringBuilder.append(movie.getTitle() + "\n");
+		}
+		resultsTextView.setText(stringBuilder.toString());
 	}
 }

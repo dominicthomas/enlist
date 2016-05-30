@@ -1,8 +1,9 @@
 package com.dogoodapps.enlist.api;
 
-import com.dogoodapps.enlist.api.converter.MoshiConverterFactory;
-import com.dogoodapps.enlist.api.model.MoviesResponse;
-import com.dogoodapps.enlist.api.model.TvResponse;
+import com.dogoodapps.enlist.api.converters.MoshiConverterFactory;
+import com.dogoodapps.enlist.api.response.MoviesResponse;
+import com.dogoodapps.enlist.api.response.PeopleResponse;
+import com.dogoodapps.enlist.api.response.TvResponse;
 
 import java.io.IOException;
 
@@ -56,14 +57,17 @@ public final class RestClient {
 		return theMovieDbService;
 	}
 
+	// TODO: Add a version path segment!
 	public interface TheMovieDbService {
 
-		// TODO: Can we add a path segment?
 		@GET(VERSION + "/movie/top_rated")
 		Observable<MoviesResponse> getTopRatedMovies();
 
 		@GET(VERSION + "/tv/top_rated")
 		Observable<TvResponse> getTopRatedTvShows();
+
+		@GET(VERSION + "/person/popular")
+		Observable<PeopleResponse> getPopularPeople();
 
 	}
 

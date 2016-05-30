@@ -1,0 +1,17 @@
+package com.dogoodapps.enlist.ui.mvp;
+
+import com.dogoodapps.enlist.api.model.Person;
+import com.dogoodapps.enlist.api.model.TvShow;
+
+import java.util.List;
+
+public class PeopleMVP {
+
+	public interface View {
+		void displayResults(List<Person> people);
+	}
+
+	public interface Presenter {
+		void loadResults();
+	}
+}

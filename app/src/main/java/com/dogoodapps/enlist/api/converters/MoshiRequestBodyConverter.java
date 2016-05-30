@@ -1,4 +1,4 @@
-package com.dogoodapps.enlist.api.converter;
+package com.dogoodapps.enlist.api.converters;
 
 import com.squareup.moshi.JsonAdapter;
 
@@ -6,7 +6,6 @@ import java.io.IOException;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import okio.Buffer;
 import retrofit2.Converter;
 

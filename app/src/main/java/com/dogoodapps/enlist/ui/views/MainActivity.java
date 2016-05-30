@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 
 import com.dogoodapps.enlist.R;
+import com.dogoodapps.enlist.ui.adapters.MainPagerAdapter;
 import com.dogoodapps.enlist.ui.mvp.MainMVP;
 import com.dogoodapps.enlist.ui.BaseMVPActivity;
 import com.dogoodapps.enlist.ui.presenters.MainPresenter;
@@ -30,13 +31,18 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
 	@Override
 	protected void init() {
 		setSupportActionBar(toolbar);
-		getPresenter().setupViewPager(this, getSupportFragmentManager(), viewPager);
+		getPresenter().setupViewPager(this, getSupportFragmentManager());
 		tabLayout.setupWithViewPager(viewPager);
 	}
 
 	@Override
 	protected MainPresenter initialisePresenter() {
 		return new MainPresenter(this);
+	}
+
+	@Override
+	public void setAdapter(MainPagerAdapter adapter) {
+		viewPager.setAdapter(adapter);
 	}
 
 }

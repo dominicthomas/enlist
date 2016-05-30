@@ -1,4 +1,4 @@
-package com.dogoodapps.enlist.api.converter;
+package com.dogoodapps.enlist.api.converters;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;

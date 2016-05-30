@@ -3,7 +3,7 @@ package com.dogoodapps.enlist.ui.presenters;
 import android.util.Log;
 
 import com.dogoodapps.enlist.api.interactors.TheMovieDbInteractor;
-import com.dogoodapps.enlist.api.model.MoviesResponse;
+import com.dogoodapps.enlist.api.response.MoviesResponse;
 import com.dogoodapps.enlist.ui.mvp.MoviesMVP;
 
 import rx.Subscriber;

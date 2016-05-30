@@ -1,8 +1,9 @@
 package com.dogoodapps.enlist.api.interactors;
 
 import com.dogoodapps.enlist.api.RestClient;
-import com.dogoodapps.enlist.api.model.MoviesResponse;
-import com.dogoodapps.enlist.api.model.TvResponse;
+import com.dogoodapps.enlist.api.response.MoviesResponse;
+import com.dogoodapps.enlist.api.response.PeopleResponse;
+import com.dogoodapps.enlist.api.response.TvResponse;
 
 import rx.Subscriber;
 import rx.Subscription;
@@ -22,4 +23,11 @@ public class TheMovieDbInteractor {
 			.observeOn(AndroidSchedulers.mainThread())
 			.subscribeOn(Schedulers.io()).subscribe(subscriber);
 	}
+
+	public static Subscription getPeople(Subscriber<PeopleResponse> subscriber) {
+		return RestClient.getService().getPopularPeople()
+			.observeOn(AndroidSchedulers.mainThread())
+			.subscribeOn(Schedulers.io()).subscribe(subscriber);
+	}
+
 }

@@ -11,7 +11,7 @@ import com.dogoodapps.enlist.ui.presenters.BasePresenter;
 
 import butterknife.ButterKnife;
 
-
+// TODO: We Need Base Recycler MVP Fragment (Pull to refresh, Loading etc...)
 public abstract class BaseMVPFragment<P extends BasePresenter> extends Fragment {
 
 	private P presenter;

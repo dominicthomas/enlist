@@ -1,9 +1,9 @@
-package com.dogoodapps.enlist.api.model;
+package com.dogoodapps.enlist.api.response;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BaseResponse<T> {
+public abstract class BaseMdbResponse<T> {
 
 	private Integer page;
 
