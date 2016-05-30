@@ -3,7 +3,7 @@ package com.dogoodapps.enlist.api;
 import com.dogoodapps.enlist.api.converters.MoshiConverterFactory;
 import com.dogoodapps.enlist.api.response.MoviesResponse;
 import com.dogoodapps.enlist.api.response.PeopleResponse;
-import com.dogoodapps.enlist.api.response.TvResponse;
+import com.dogoodapps.enlist.api.response.TvShowResponse;
 
 import java.io.IOException;
 
@@ -64,7 +64,7 @@ public final class RestClient {
 		Observable<MoviesResponse> getTopRatedMovies();
 
 		@GET(VERSION + "/tv/top_rated")
-		Observable<TvResponse> getTopRatedTvShows();
+		Observable<TvShowResponse> getTopRatedTvShows();
 
 		@GET(VERSION + "/person/popular")
 		Observable<PeopleResponse> getPopularPeople();

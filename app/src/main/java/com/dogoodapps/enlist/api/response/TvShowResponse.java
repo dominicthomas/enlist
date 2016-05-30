@@ -4,7 +4,7 @@ import com.dogoodapps.enlist.api.model.TvShow;
 
 import java.util.List;
 
-public class TvResponse extends BaseMdbResponse<TvShow> {
+public class TvShowResponse extends BaseMdbResponse<TvShow> {
 
 	@Override
 	public List<TvShow> getResults() {

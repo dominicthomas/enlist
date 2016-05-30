@@ -1,12 +1,9 @@
 package com.dogoodapps.enlist.ui.presenters;
 
-import android.util.Log;
-
 import com.dogoodapps.enlist.api.interactors.TheMovieDbInteractor;
-import com.dogoodapps.enlist.api.response.TvResponse;
+import com.dogoodapps.enlist.api.response.TvShowResponse;
+import com.dogoodapps.enlist.api.subscribers.MdbSubscriber;
 import com.dogoodapps.enlist.ui.mvp.TvShowMVP;
-
-import rx.Subscriber;
 
 public class TvShowPresenter extends BasePresenter<TvShowMVP.View> implements TvShowMVP.Presenter {
 
@@ -16,23 +13,10 @@ public class TvShowPresenter extends BasePresenter<TvShowMVP.View> implements Tv
 
 	@Override
 	public void loadResults() {
-		// TODO: Show loading?
-		TheMovieDbInteractor.getTvShows(new Subscriber<TvResponse>() {
+		TheMovieDbInteractor.getTvShows(new MdbSubscriber<TvShowResponse>() {
 			@Override
-			public void onCompleted() {
-				Log.d("enList", "Completed");
-				// TODO: Hide loading?
-			}
-
-			@Override
-			public void onError(Throwable e) {
-				// TODO: onError - show error screen / message!
-				Log.d("enList", e.getMessage());
-			}
-
-			@Override
-			public void onNext(TvResponse tvResponse) {
-				getView().displayResults(tvResponse.getResults());
+			public void onLoad(TvShowResponse tvShowResponse) {
+				getView().displayResults(tvShowResponse.getResults());
 			}
 		});
 	}
