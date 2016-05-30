@@ -1,29 +1,23 @@
 package com.dogoodapps.enlist.ui.views;
 
-import android.widget.TextView;
-
-import com.dogoodapps.enlist.R;
 import com.dogoodapps.enlist.api.model.TvShow;
-import com.dogoodapps.enlist.ui.BaseMVPFragment;
+import com.dogoodapps.enlist.ui.BaseMVPListFragment;
+import com.dogoodapps.enlist.ui.adapters.TvShowAdapter;
 import com.dogoodapps.enlist.ui.mvp.TvShowMVP;
 import com.dogoodapps.enlist.ui.presenters.TvShowPresenter;
 
 import java.util.List;
 
-import butterknife.InjectView;
+public class TVShowFragment extends BaseMVPListFragment<TvShowPresenter, TvShowAdapter> implements TvShowMVP.View {
 
-public class TVShowFragment extends BaseMVPFragment<TvShowPresenter> implements TvShowMVP.View {
+	@Override
+	protected void init() {
+		getPresenter().loadResults();
+	}
 
-	// TODO: Need a base recycler list fragment to display results
-
-	// TODO: Parcelor will send to a details screen
-
-	@InjectView(R.id.textView_results)
-	TextView resultsTextView;
-
-	@Override // TODO: This will be a base recycler fragment! - inflate default
-	protected int getLayoutId() {
-		return R.layout.fragment_tvshows;
+	@Override
+	protected TvShowAdapter initialiseAdapter() {
+		return new TvShowAdapter(getActivity());
 	}
 
 	@Override
@@ -32,16 +26,8 @@ public class TVShowFragment extends BaseMVPFragment<TvShowPresenter> implements 
 	}
 
 	@Override
-	protected void init() {
-		getPresenter().loadResults();
-	}
-
-	@Override
 	public void displayResults(List<TvShow> tvShows) {
-		StringBuilder stringBuilder = new StringBuilder();
-		for (TvShow tvShow : tvShows) {
-			stringBuilder.append(tvShow.getName() + "\n");
-		}
-		resultsTextView.setText(stringBuilder.toString());
+		getAdapter().setList(tvShows);
+		getAdapter().refresh();
 	}
 }
