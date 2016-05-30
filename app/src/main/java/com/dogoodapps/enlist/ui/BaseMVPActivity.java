@@ -1,22 +1,34 @@
-package com.dogoodapps.enlist;
+package com.dogoodapps.enlist.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.dogoodapps.enlist.ui.presenters.BasePresenter;
+
 import butterknife.ButterKnife;
 
-public abstract class BaseActivity extends AppCompatActivity {
+// TODO: Tests
+public abstract class BaseMVPActivity<P extends BasePresenter> extends AppCompatActivity {
+
+	private P presenter;
 
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(getLayoutId());
 		ButterKnife.inject(this);
+		this.presenter = initialisePresenter();
 		init();
 	}
 
 	protected abstract int getLayoutId();
 
 	protected abstract void init();
+
+	protected abstract P initialisePresenter();
+
+	public P getPresenter() {
+		return presenter;
+	}
 }
