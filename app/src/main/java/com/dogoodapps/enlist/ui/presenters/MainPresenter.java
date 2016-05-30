@@ -15,7 +15,7 @@ import com.dogoodapps.enlist.ui.views.TVShowFragment;
 public class MainPresenter extends BasePresenter<MainMVP.View, MainInteractor> implements MainMVP.Presenter {
 
 	public MainPresenter(MainMVP.View view) {
-		super(view, null);
+		super(view, null); // TODO: No interactor
 	}
 
 	@Override

@@ -19,6 +19,10 @@ public abstract class BaseRecyclerAdapter<T, V extends View> extends RecyclerVie
 		this.context = context;
 	}
 
+	public Context getContext() {
+		return context;
+	}
+
 	protected abstract V newView(Context context);
 
 	protected abstract void bind(T value, V view);

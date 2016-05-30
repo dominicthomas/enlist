@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.dogoodapps.enlist.R;
 import com.dogoodapps.enlist.api.model.Movie;
 import com.dogoodapps.enlist.app.BaseRecyclerAdapter;
+import com.dogoodapps.enlist.utils.ImageLoader;
 
 import butterknife.ButterKnife;
 
@@ -17,7 +18,7 @@ public class MoviesAdapter extends BaseRecyclerAdapter<Movie, View> {
 	}
 
 	@Override
-	protected View newView(Context context) {
+	protected View newView(Context context) { // TODO: Inflate?
 		return View.inflate(context, R.layout.view_listitem_row, null);
 	}
 
