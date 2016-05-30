@@ -3,12 +3,13 @@ package com.dogoodapps.enlist.ui.views;
 import com.dogoodapps.enlist.api.model.Person;
 import com.dogoodapps.enlist.ui.BaseMVPListFragment;
 import com.dogoodapps.enlist.ui.adapters.MoviesAdapter;
+import com.dogoodapps.enlist.ui.adapters.PeopleAdapter;
 import com.dogoodapps.enlist.ui.mvp.PeopleMVP;
 import com.dogoodapps.enlist.ui.presenters.PeoplePresenter;
 
 import java.util.List;
 
-public class PeopleFragment extends BaseMVPListFragment<PeoplePresenter, MoviesAdapter> implements PeopleMVP.View {
+public class PeopleFragment extends BaseMVPListFragment<PeoplePresenter, PeopleAdapter> implements PeopleMVP.View {
 
 	@Override
 	protected void init() {
@@ -16,8 +17,8 @@ public class PeopleFragment extends BaseMVPListFragment<PeoplePresenter, MoviesA
 	}
 
 	@Override
-	protected MoviesAdapter initialiseAdapter() {
-		return new MoviesAdapter(getActivity());
+	protected PeopleAdapter initialiseAdapter() {
+		return new PeopleAdapter(getActivity());
 	}
 
 	@Override
@@ -25,9 +26,9 @@ public class PeopleFragment extends BaseMVPListFragment<PeoplePresenter, MoviesA
 		return new PeoplePresenter(this);
 	}
 
-
 	@Override
 	public void displayResults(List<Person> people) {
-
+		getAdapter().setList(people);
+		getAdapter().refresh();
 	}
 }
