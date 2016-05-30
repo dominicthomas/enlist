@@ -1,11 +1,15 @@
 package com.dogoodapps.enlist.api.model;
 
+import com.squareup.moshi.Json;
+
 public class Movie extends BaseMdbItem {
 
 	private String title;
 
+	@Json(name = "original_title")
 	private String originalTitle;
 
+	@Json(name = "release_date")
 	private String releaseDate;
 
 	private Boolean video;

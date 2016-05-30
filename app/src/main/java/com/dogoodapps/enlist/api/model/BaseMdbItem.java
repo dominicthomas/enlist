@@ -1,27 +1,35 @@
 package com.dogoodapps.enlist.api.model;
 
+import com.squareup.moshi.Json;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BaseMdbItem {
 
+	@Json(name = "poster_path")
 	private String posterPath;
 
 	private String overview;
 
+	@Json(name = "genre_ids")
 	private List<Integer> genreIds = new ArrayList<>();
 
 	private Integer id;
 
+	@Json(name = "original_language")
 	private String originalLanguage;
 
+	@Json(name = "backdrop_path")
 	private String backdropPath;
 
 	private Double popularity;
 
+	@Json(name = "vote_count")
 	private Integer voteCount;
 
-	private Integer voteAverage;
+	@Json(name = "vote_average")
+	private Float voteAverage;
 
 	public String getPosterPath() {
 		return posterPath;
@@ -55,7 +63,7 @@ public abstract class BaseMdbItem {
 		return voteCount;
 	}
 
-	public Integer getVoteAverage() {
+	public Float getVoteAverage() {
 		return voteAverage;
 	}
 

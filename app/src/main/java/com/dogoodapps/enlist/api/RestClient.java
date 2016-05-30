@@ -1,6 +1,7 @@
 package com.dogoodapps.enlist.api;
 
 import com.dogoodapps.enlist.api.converters.MoshiConverterFactory;
+import com.dogoodapps.enlist.api.model.Configuration;
 import com.dogoodapps.enlist.api.response.MoviesResponse;
 import com.dogoodapps.enlist.api.response.PeopleResponse;
 import com.dogoodapps.enlist.api.response.TvShowResponse;
@@ -27,14 +28,12 @@ public final class RestClient {
 
 	private static final String API_KEY_PARAM = "api_key";
 
-	private static TheMovieDbService theMovieDbService;
+	private static MdbService mdbService;
 
-	public static TheMovieDbService getService() {
-
-		if (theMovieDbService == null) {
-
+	public static MdbService getService() {
+		if (mdbService == null) {
 			final OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-			httpClient.addInterceptor(new Interceptor() {
+			httpClient.addInterceptor(new Interceptor() { // TODO: Lambda broken?
 				@Override
 				public okhttp3.Response intercept(Chain chain) throws IOException {
 					Request request = chain.request();
@@ -52,13 +51,16 @@ public final class RestClient {
 				.addCallAdapterFactory(RxJavaCallAdapterFactory.createWithScheduler(Schedulers.io()))
 				.build();
 
-			theMovieDbService = retrofit.create(TheMovieDbService.class);
+			mdbService = retrofit.create(MdbService.class);
 		}
-		return theMovieDbService;
+		return mdbService;
 	}
 
 	// TODO: Add a version path segment!
-	public interface TheMovieDbService {
+	public interface MdbService {
+
+		@GET(VERSION + "/configuration")
+		Observable<Configuration> getConfiguration();
 
 		@GET(VERSION + "/movie/top_rated")
 		Observable<MoviesResponse> getTopRatedMovies();
