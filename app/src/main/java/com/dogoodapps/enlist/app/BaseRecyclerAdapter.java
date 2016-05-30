@@ -1,4 +1,4 @@
-package com.dogoodapps.enlist.ui.adapters;
+package com.dogoodapps.enlist.app;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

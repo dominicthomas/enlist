@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.dogoodapps.enlist.R;
 import com.dogoodapps.enlist.api.model.Movie;
+import com.dogoodapps.enlist.app.BaseRecyclerAdapter;
 
 import butterknife.ButterKnife;
 

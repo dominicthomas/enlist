@@ -1,7 +1,6 @@
 package com.dogoodapps.enlist.ui.mvp;
 
 import com.dogoodapps.enlist.api.model.Person;
-import com.dogoodapps.enlist.api.model.TvShow;
 
 import java.util.List;
 

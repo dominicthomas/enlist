@@ -7,7 +7,7 @@ import android.support.v7.widget.Toolbar;
 import com.dogoodapps.enlist.R;
 import com.dogoodapps.enlist.ui.adapters.MainPagerAdapter;
 import com.dogoodapps.enlist.ui.mvp.MainMVP;
-import com.dogoodapps.enlist.ui.BaseMVPActivity;
+import com.dogoodapps.enlist.app.BaseMVPActivity;
 import com.dogoodapps.enlist.ui.presenters.MainPresenter;
 
 import butterknife.InjectView;

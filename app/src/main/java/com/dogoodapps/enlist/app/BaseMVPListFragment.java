@@ -1,4 +1,4 @@
-package com.dogoodapps.enlist.ui;
+package com.dogoodapps.enlist.app;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,13 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dogoodapps.enlist.R;
-import com.dogoodapps.enlist.ui.adapters.BaseRecyclerAdapter;
-import com.dogoodapps.enlist.ui.presenters.BasePresenter;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-// TODO: Tests / PTR?
+// TODO: Tests
 public abstract class BaseMVPListFragment<P extends BasePresenter, A extends BaseRecyclerAdapter> extends Fragment {
 
 	@InjectView(R.id.recycler_view)

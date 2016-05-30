@@ -4,16 +4,18 @@ import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
 import com.dogoodapps.enlist.R;
+import com.dogoodapps.enlist.api.interactors.MainInteractor;
+import com.dogoodapps.enlist.app.BasePresenter;
 import com.dogoodapps.enlist.ui.adapters.MainPagerAdapter;
 import com.dogoodapps.enlist.ui.mvp.MainMVP;
 import com.dogoodapps.enlist.ui.views.MoviesFragment;
 import com.dogoodapps.enlist.ui.views.PeopleFragment;
 import com.dogoodapps.enlist.ui.views.TVShowFragment;
 
-public class MainPresenter extends BasePresenter<MainMVP.View> implements MainMVP.Presenter {
+public class MainPresenter extends BasePresenter<MainMVP.View, MainInteractor> implements MainMVP.Presenter {
 
 	public MainPresenter(MainMVP.View view) {
-		super(view);
+		super(view, null);
 	}
 
 	@Override

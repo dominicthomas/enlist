@@ -1,7 +1,8 @@
 package com.dogoodapps.enlist.ui.views;
 
+import com.dogoodapps.enlist.api.interactors.MdbInteractor;
 import com.dogoodapps.enlist.api.model.Movie;
-import com.dogoodapps.enlist.ui.BaseMVPListFragment;
+import com.dogoodapps.enlist.app.BaseMVPListFragment;
 import com.dogoodapps.enlist.ui.adapters.MoviesAdapter;
 import com.dogoodapps.enlist.ui.mvp.MoviesMVP;
 import com.dogoodapps.enlist.ui.presenters.MoviesPresenter;
@@ -22,7 +23,7 @@ public class MoviesFragment extends BaseMVPListFragment<MoviesPresenter, MoviesA
 
 	@Override
 	protected MoviesPresenter initialisePresenter() {
-		return new MoviesPresenter(this);
+		return new MoviesPresenter(this, new MdbInteractor());
 	}
 
 	@Override

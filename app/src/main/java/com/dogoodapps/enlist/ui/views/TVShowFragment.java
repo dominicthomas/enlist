@@ -1,7 +1,8 @@
 package com.dogoodapps.enlist.ui.views;
 
+import com.dogoodapps.enlist.api.interactors.MdbInteractor;
 import com.dogoodapps.enlist.api.model.TvShow;
-import com.dogoodapps.enlist.ui.BaseMVPListFragment;
+import com.dogoodapps.enlist.app.BaseMVPListFragment;
 import com.dogoodapps.enlist.ui.adapters.TvShowAdapter;
 import com.dogoodapps.enlist.ui.mvp.TvShowMVP;
 import com.dogoodapps.enlist.ui.presenters.TvShowPresenter;
@@ -22,7 +23,7 @@ public class TVShowFragment extends BaseMVPListFragment<TvShowPresenter, TvShowA
 
 	@Override
 	protected TvShowPresenter initialisePresenter() {
-		return new TvShowPresenter(this);
+		return new TvShowPresenter(this, new MdbInteractor());
 	}
 
 	@Override
