@@ -6,7 +6,7 @@ import com.dogoodapps.enlist.api.interactors.MdbInteractor;
 import com.dogoodapps.enlist.api.response.MoviesResponse;
 import com.dogoodapps.enlist.api.subscribers.MdbSubscriber;
 import com.dogoodapps.enlist.app.BasePresenter;
-import com.dogoodapps.enlist.ui.mvp.MoviesMVP;
+import com.dogoodapps.enlist.mvp.MoviesMVP;
 
 public class MoviesPresenter extends BasePresenter<MoviesMVP.View, MdbInteractor> implements MoviesMVP.Presenter {
 

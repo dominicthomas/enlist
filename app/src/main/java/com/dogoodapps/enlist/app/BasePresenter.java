@@ -18,4 +18,5 @@ public abstract class BasePresenter<V, I extends BaseInteractor> {
 	public I getInteractor(){
 		return interactor;
 	}
+
 }

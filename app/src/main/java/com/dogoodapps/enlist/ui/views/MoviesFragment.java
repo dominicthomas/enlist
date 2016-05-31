@@ -4,7 +4,7 @@ import com.dogoodapps.enlist.api.interactors.MdbInteractor;
 import com.dogoodapps.enlist.api.model.Movie;
 import com.dogoodapps.enlist.app.BaseMVPListFragment;
 import com.dogoodapps.enlist.ui.adapters.MoviesAdapter;
-import com.dogoodapps.enlist.ui.mvp.MoviesMVP;
+import com.dogoodapps.enlist.mvp.MoviesMVP;
 import com.dogoodapps.enlist.ui.presenters.MoviesPresenter;
 
 import java.util.List;

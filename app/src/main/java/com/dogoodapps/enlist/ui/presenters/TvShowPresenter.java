@@ -4,7 +4,7 @@ import com.dogoodapps.enlist.api.interactors.MdbInteractor;
 import com.dogoodapps.enlist.api.response.TvShowResponse;
 import com.dogoodapps.enlist.api.subscribers.MdbSubscriber;
 import com.dogoodapps.enlist.app.BasePresenter;
-import com.dogoodapps.enlist.ui.mvp.TvShowMVP;
+import com.dogoodapps.enlist.mvp.TvShowMVP;
 
 public class TvShowPresenter extends BasePresenter<TvShowMVP.View, MdbInteractor> implements TvShowMVP.Presenter {
 

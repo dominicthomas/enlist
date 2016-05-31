@@ -4,7 +4,7 @@ import com.dogoodapps.enlist.api.interactors.MdbInteractor;
 import com.dogoodapps.enlist.api.model.Person;
 import com.dogoodapps.enlist.app.BaseMVPListFragment;
 import com.dogoodapps.enlist.ui.adapters.PeopleAdapter;
-import com.dogoodapps.enlist.ui.mvp.PeopleMVP;
+import com.dogoodapps.enlist.mvp.PeopleMVP;
 import com.dogoodapps.enlist.ui.presenters.PeoplePresenter;
 
 import java.util.List;

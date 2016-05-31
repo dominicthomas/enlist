@@ -1,4 +1,4 @@
-package com.dogoodapps.enlist.ui.mvp;
+package com.dogoodapps.enlist.mvp;
 
 import com.dogoodapps.enlist.api.model.Person;
 

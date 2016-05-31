@@ -1,4 +1,4 @@
-package com.dogoodapps.enlist.ui.mvp;
+package com.dogoodapps.enlist.mvp;
 
 import android.content.Context;
 import android.support.v4.app.FragmentManager;

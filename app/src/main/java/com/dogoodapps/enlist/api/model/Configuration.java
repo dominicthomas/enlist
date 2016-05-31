@@ -20,4 +20,8 @@ public class Configuration {
 		return changeKeys;
 	}
 
+	public Configuration(Images images, List<String> changeKeys) {
+		this.images = images;
+		this.changeKeys = changeKeys;
+	}
 }

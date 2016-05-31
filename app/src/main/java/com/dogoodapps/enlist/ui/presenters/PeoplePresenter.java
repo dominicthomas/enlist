@@ -4,7 +4,7 @@ import com.dogoodapps.enlist.api.interactors.MdbInteractor;
 import com.dogoodapps.enlist.api.response.PeopleResponse;
 import com.dogoodapps.enlist.api.subscribers.MdbSubscriber;
 import com.dogoodapps.enlist.app.BasePresenter;
-import com.dogoodapps.enlist.ui.mvp.PeopleMVP;
+import com.dogoodapps.enlist.mvp.PeopleMVP;
 
 public class PeoplePresenter extends BasePresenter<PeopleMVP.View, MdbInteractor> implements PeopleMVP.Presenter {
 

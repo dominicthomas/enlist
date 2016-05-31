@@ -4,7 +4,7 @@ import com.dogoodapps.enlist.api.interactors.MdbInteractor;
 import com.dogoodapps.enlist.api.model.TvShow;
 import com.dogoodapps.enlist.app.BaseMVPListFragment;
 import com.dogoodapps.enlist.ui.adapters.TvShowAdapter;
-import com.dogoodapps.enlist.ui.mvp.TvShowMVP;
+import com.dogoodapps.enlist.mvp.TvShowMVP;
 import com.dogoodapps.enlist.ui.presenters.TvShowPresenter;
 
 import java.util.List;
