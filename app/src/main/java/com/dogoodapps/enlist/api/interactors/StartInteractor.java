@@ -8,6 +8,8 @@ import com.dogoodapps.enlist.app.BaseInteractor;
 import com.dogoodapps.enlist.utils.JsonHelper;
 import com.dogoodapps.enlist.utils.PrefsHelper;
 
+import java.io.IOException;
+
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -27,34 +29,51 @@ public class StartInteractor extends BaseInteractor {
 		this.configurationJsonHelper = configurationJsonHelper;
 	}
 
-	public Observable<Configuration> loadConfiguration() {
-		return Observable.create((Observable.OnSubscribe<Configuration>)
-			new Observable.OnSubscribe<Configuration>() {
+	public void loadConfiguration(Subscriber<Configuration> subscriber) {
+
+		if (prefsHelper.getConfiguration(context).isEmpty()) {
+			RestClient.getService().getConfiguration()
+				.observeOn(AndroidSchedulers.mainThread())
+				.subscribeOn(Schedulers.io())
+				.subscribe(new Subscriber<Configuration>() {
+					@Override
+					public void onCompleted() {
+						subscriber.onCompleted();
+					}
+
+					@Override
+					public void onError(Throwable e) {
+						subscriber.onError(e);
+					}
+
+					@Override
+					public void onNext(Configuration configuration) {
+						prefsHelper.setConfiguration(context, configurationJsonHelper.toJson(configuration, Configuration.class));
+						subscriber.onNext(configuration);
+					}
+				});
+
+		} else {
+
+			Observable.create(new Observable.OnSubscribe<Configuration>() {
 				@Override
 				public void call(Subscriber<? super Configuration> subscriber) {
-					if (prefsHelper.getConfiguration(context).isEmpty()) {
-						RestClient.getService().getConfiguration()
-							.observeOn(AndroidSchedulers.mainThread())
-							.subscribeOn(Schedulers.io()).subscribe(new Subscriber<Configuration>() {
-							@Override
-							public void onCompleted() {
-								subscriber.onCompleted();
-							}
-
-							@Override
-							public void onError(Throwable e) {
-								subscriber.onError(e);
-							}
-
-							@Override
-							public void onNext(Configuration configuration) {
-								prefsHelper.setConfiguration(context, configurationJsonHelper.toJson(configuration, Configuration.class));
-								subscriber.onNext(configuration);
-							}
-						});
+					try {
+						String configurationJson = prefsHelper.getConfiguration(context);
+						Configuration configuration = configurationJsonHelper.fromJson(configurationJson, Configuration.class);
+						subscriber.onNext(configuration);
+					} catch (IOException e) {
+						e.printStackTrace();
+						subscriber.onError(e);
 					}
+					subscriber.onCompleted();
 				}
-			});
+			})
+				.observeOn(AndroidSchedulers.mainThread())
+				.subscribeOn(Schedulers.io())
+				.subscribe(subscriber);
+		}
 	}
 
 }
+

@@ -17,6 +17,11 @@ public abstract class BaseMVPActivity<P extends BasePresenter> extends AppCompat
 		setContentView(getLayoutId());
 		ButterKnife.inject(this);
 		this.presenter = initialisePresenter();
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
 		init();
 	}
 

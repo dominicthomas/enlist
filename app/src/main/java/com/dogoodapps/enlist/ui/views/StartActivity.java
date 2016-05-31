@@ -29,6 +29,6 @@ public class StartActivity extends BaseMVPActivity<StartPresenter> implements St
 
 	@Override
 	public void onLoaded(Configuration configuration) {
-		configuration.getChangeKeys();
+		getPresenter().loadMainActivity(this);
 	}
 }

@@ -1,5 +1,7 @@
 package com.dogoodapps.enlist.mvp;
 
+import android.content.Context;
+
 import com.dogoodapps.enlist.api.model.Configuration;
 
 public class StartMVP {
@@ -10,6 +12,8 @@ public class StartMVP {
 
 	public interface Presenter {
 		void loadConfiguration();
+
+		void loadMainActivity(Context context);
 	}
 
 }
