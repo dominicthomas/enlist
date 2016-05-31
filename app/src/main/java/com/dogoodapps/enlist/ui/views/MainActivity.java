@@ -29,15 +29,15 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
 	}
 
 	@Override
+	protected MainPresenter initialisePresenter() {
+		return new MainPresenter(this);
+	}
+
+	@Override
 	protected void init() {
 		setSupportActionBar(toolbar);
 		getPresenter().setupViewPager(this, getSupportFragmentManager());
 		tabLayout.setupWithViewPager(viewPager);
-	}
-
-	@Override
-	protected MainPresenter initialisePresenter() {
-		return new MainPresenter(this);
 	}
 
 	@Override

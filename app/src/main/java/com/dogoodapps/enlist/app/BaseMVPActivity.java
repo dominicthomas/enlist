@@ -22,9 +22,9 @@ public abstract class BaseMVPActivity<P extends BasePresenter> extends AppCompat
 
 	protected abstract int getLayoutId();
 
-	protected abstract void init();
-
 	protected abstract P initialisePresenter();
+
+	protected abstract void init();
 
 	public P getPresenter() {
 		return presenter;
