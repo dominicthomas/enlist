@@ -30,49 +30,54 @@ public class StartInteractor extends BaseInteractor {
 	}
 
 	public void loadConfiguration(Subscriber<Configuration> subscriber) {
-
 		if (prefsHelper.getConfiguration(context).isEmpty()) {
-			RestClient.getService().getConfiguration()
-				.observeOn(AndroidSchedulers.mainThread())
-				.subscribeOn(Schedulers.io())
-				.subscribe(new Subscriber<Configuration>() {
-					@Override
-					public void onCompleted() {
-						subscriber.onCompleted();
-					}
-
-					@Override
-					public void onError(Throwable e) {
-						subscriber.onError(e);
-					}
-
-					@Override
-					public void onNext(Configuration configuration) {
-						prefsHelper.setConfiguration(context, configurationJsonHelper.toJson(configuration, Configuration.class));
-						subscriber.onNext(configuration);
-					}
-				});
-
+			loadFromApi(subscriber, prefsHelper);
 		} else {
+			loadFromPrefs(subscriber, prefsHelper);
+		}
+	}
 
-			Observable.create(new Observable.OnSubscribe<Configuration>() {
+	private void loadFromApi(Subscriber<Configuration> subscriber, PrefsHelper prefsHelper) {
+		RestClient.getService().getConfiguration()
+			.observeOn(AndroidSchedulers.mainThread())
+			.subscribeOn(Schedulers.io())
+			.subscribe(new Subscriber<Configuration>() {
 				@Override
-				public void call(Subscriber<? super Configuration> subscriber) {
-					try {
-						String configurationJson = prefsHelper.getConfiguration(context);
-						Configuration configuration = configurationJsonHelper.fromJson(configurationJson, Configuration.class);
-						subscriber.onNext(configuration);
-					} catch (IOException e) {
-						e.printStackTrace();
-						subscriber.onError(e);
-					}
+				public void onCompleted() {
 					subscriber.onCompleted();
 				}
-			})
-				.observeOn(AndroidSchedulers.mainThread())
-				.subscribeOn(Schedulers.io())
-				.subscribe(subscriber);
-		}
+
+				@Override
+				public void onError(Throwable e) {
+					subscriber.onError(e);
+				}
+
+				@Override
+				public void onNext(Configuration configuration) {
+					prefsHelper.setConfiguration(context, configurationJsonHelper.toJson(configuration, Configuration.class));
+					subscriber.onNext(configuration);
+				}
+			});
+	}
+
+	private void loadFromPrefs(Subscriber<Configuration> subscriber, PrefsHelper prefsHelper) {
+		// TODO: Create a task to delete the the configuration every few days
+		Observable.create(new Observable.OnSubscribe<Configuration>() {
+			@Override
+			public void call(Subscriber<? super Configuration> subscriber) {
+				try {
+					final String configurationJson = prefsHelper.getConfiguration(context);
+					final Configuration configuration = configurationJsonHelper.fromJson(configurationJson, Configuration.class);
+					subscriber.onNext(configuration);
+				} catch (IOException e) {
+					e.printStackTrace();
+					subscriber.onError(e);
+				}
+				subscriber.onCompleted();
+			}
+		}).observeOn(AndroidSchedulers.mainThread())
+			.subscribeOn(Schedulers.io())
+			.subscribe(subscriber);
 	}
 
 }

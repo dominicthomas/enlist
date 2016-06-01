@@ -11,11 +11,11 @@ public abstract class BasePresenter<V, I extends BaseInteractor> {
 		this.interactor = interactor;
 	}
 
-	public V getView(){
+	public V getView() {
 		return view;
 	}
 
-	public I getInteractor(){
+	public I getInteractor() {
 		return interactor;
 	}
 

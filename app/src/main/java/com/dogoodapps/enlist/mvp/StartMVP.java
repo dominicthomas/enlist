@@ -13,7 +13,7 @@ public class StartMVP {
 	public interface Presenter {
 		void loadConfiguration();
 
-		void loadMainActivity(Context context);
+		void loadActivity(Context context, Class<?> cls);
 	}
 
 }
